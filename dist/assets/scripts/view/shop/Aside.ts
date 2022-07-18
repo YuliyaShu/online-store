@@ -36,7 +36,7 @@ class Aside {
       Utils.createAnyElement(filtersWrapper.element, { type: 'div', className: ['aside__filter', filterName], innerText: filterName });     
     }
     
-    const filterData = Utils.getComplexArrayFromStorage('filterData');
+    const filterData = Utils.getArrayFromStorageEx<string[]>('filterData');
     
 
     // 'quantity'
@@ -92,7 +92,6 @@ class Aside {
       } else {
         Utils.createAnyElement(designer, { type: 'button',  className: ['button', 'designer', 'designer__1'], innerText: 'Peppy' });
       }
-      
 
       if (filterData[0].includes('Eleven')) {
         Utils.createAnyElement(designer, { type: 'button', className: ['button', 'designer', 'designer__2', 'active-filter'], innerText: 'Eleven' });

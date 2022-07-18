@@ -1,4 +1,4 @@
-import Search from "../../components/components/Search";
+import Search from "../../components/Search";
 import AnyElement from "../../elements/AnyElement";
 import Utils from "../../utils/Utils";
 import ShopView from "../ShopView";
@@ -22,7 +22,7 @@ class Header {
     
     const bag = Utils.createAnyElement(container.element, { type: 'div', className: ['header__bag'] });
     Utils.createAnyElement(bag.element, { type: 'img', className: ['header__bag-img'], attributes: [['src', './assets/images/bag.jpg'], ['alt', 'bag image']]});
-    const count = Utils.getArrayFromStorage('cartList').length;
+    const count = Utils.getArrayFromStorageEx<string>('cartList').length;
     Utils.createAnyElement(bag.element, {type: 'div', className: ['header__bag-count'], innerText: count.toString()});
   }
 }
