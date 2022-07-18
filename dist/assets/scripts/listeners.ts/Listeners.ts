@@ -1,7 +1,6 @@
 import Poster from "../components/components/Poster";
-import Posters from "../components/components/Posters";
 import Search from "../components/components/Search";
-import { PosterInCartInterface, PosterInterface } from "../interfaces.ts/PosterInterface";
+import { PosterInterface } from "../interfaces.ts/PosterInterface";
 import FindTarget from "../utils/FindTarget";
 import Utils from "../utils/Utils";
 import ShopView from "../view/ShopView";
@@ -66,6 +65,7 @@ class Listeners {
   static addSortOnClickEvent() {
     document.querySelectorAll('.sort__button').forEach(button => {
       button.addEventListener('click', () => {
+        document.querySelectorAll('.sort__button').forEach(buttonClass => buttonClass.classList.remove('sort__active'));
         button.classList.add('sort__active');
         let sortOrder = +Utils.getArrayFromStorage('sortData')[1];
         sortOrder = sortOrder ? 1 - Number(sortOrder) : 1;

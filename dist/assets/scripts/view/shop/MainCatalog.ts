@@ -1,10 +1,7 @@
 import Poster from "../../components/components/Poster";
-import Posters from "../../components/components/Posters";
 import AnyElement from "../../elements/AnyElement";
-import { PosterInterface } from "../../interfaces.ts/PosterInterface";
 import Listeners from "../../listeners.ts/Listeners";
 import Utils from "../../utils/Utils";
-import ShopView from "../ShopView";
 
 class MainCatalog {
 
@@ -17,10 +14,25 @@ class MainCatalog {
     }
 
     // sorting
+    const sortData = Utils.getArrayFromStorage('sortData');
     const sort = Utils.createAnyElement(main.element, { type: 'div', className: ['main__sort', 'sort'], innerText: 'SORT BY' });
-    Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__name'], innerText: 'name' });
-    Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__year'], innerText: 'year' });
-    Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__category'], innerText: 'category' });
+    if (sortData.includes('name')) {
+      Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__name', 'sort__active'], innerText: 'name' });
+    } else {
+      Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__name'], innerText: 'name' });
+    }
+
+    if (sortData.includes('year')) {
+      Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__year', 'sort__active'], innerText: 'year' });
+    } else {
+      Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__year'], innerText: 'year' });
+    }
+
+    if (sortData.includes('category')) {
+      Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__category', 'sort__active'], innerText: 'category' });
+    } else {
+      Utils.createAnyElement(sort.element, { type: 'button', className: ['button', 'sort__button', 'sort__category'], innerText: 'category' });
+    }
     Listeners.addSortOnClickEvent();
 
     // catalog
